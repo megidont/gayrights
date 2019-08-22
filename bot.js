@@ -44,7 +44,7 @@ bot.on('message', function(message){
 
 			}
 
-			var words = mess.split(/\s/g);
+			var words = mess.split(/\W+/g);
 			if(words){
 
 				for(var i = 0; i < words.length; i++){
