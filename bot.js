@@ -1,9 +1,9 @@
 var Discord = require('discord.js');
 var auth = require('./auth.json');
 
-var forbidden = ["straight rights!", "cis rights!", "cishet rights!", "racist rights!", "there's no way I can figure out everything bad please forgive me rights!", "terf rights", "radfem rights"];
-
 var bot = new Discord.Client();
+
+var forbidden = ["straight rights!", "cis rights!", "cishet rights!", "racist rights!", "there's no way I can figure out everything bad please forgive me rights!", "terf rights", "radfem rights"];
 
 bot.once('ready', function(evt){
 
@@ -15,7 +15,7 @@ bot.once('ready', function(evt){
 
 bot.on('message', function(message){
 
-	if(message.author.id != bot.user.id){
+	if(message.author.bot == false){
 
 		var mess = message.content.toLowerCase();
 
@@ -101,6 +101,12 @@ bot.on('message', function(message){
 				}
 
 			}
+
+		}
+
+		if(message.isMentioned(bot.user)){
+
+			message.channel.send("©2020 Megidon't (<@286788803975315466>). To add, please click: https://discordapp.com/oauth2/authorize?client_id=597262472994357268&scope=bot&permissions=3072");
 
 		}
 
