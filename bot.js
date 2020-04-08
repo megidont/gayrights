@@ -1,6 +1,8 @@
 var Discord = require('discord.js');
 var auth = require('./auth.json');
 
+var forbidden = ["straight rights!", "cis rights!", "cishet rights!", "racist rights!", "there's no way I can figure out everything bad please forgive me rights!", "terf rights", "radfem rights"];
+
 var bot = new Discord.Client();
 
 bot.once('ready', function(evt){
@@ -28,7 +30,11 @@ bot.on('message', function(message){
 				hasquotes[i] = hasquotes[i].substring(1, end);
 				hasquotes[i] = hasquotes[i].replace(/[^a-zA-Z0-9\s:\-\'\<\>\#\@]/gi, "");
 
-				message.channel.send(hasquotes[i] + "!");
+				if(!forbidden.includes(hasquotes[i] + "!")){
+
+					message.channel.send(hasquotes[i] + "!");
+
+				}
 
 			}
 
@@ -84,7 +90,11 @@ bot.on('message', function(message){
 
 						outmessage[i] = outmessage[i].replace(/[^a-zA-Z0-9\s:\-\'\<\>\#\@]/gi, "");
 
-						message.channel.send(outmessage[i] + "!");
+						if(!forbidden.includes(outmessage[i]+"!")){
+
+							message.channel.send(outmessage[i] + "!");
+
+						}
 
 					}
 
