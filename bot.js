@@ -9,8 +9,6 @@ bot.once('ready', function(evt){
 
 	console.log("Connected as " + bot.user.username + " (" + bot.user.id + ")");
 
-	bot.user.setActivity("for * rights.", {type: "Watching" });
-
 });
 
 bot.on('message', function(message){
@@ -111,6 +109,8 @@ bot.on('message', function(message){
 		}
 
 	}
+
+	bot.user.setActivity(bot.guilds.size + " servers!", {type: "Watching" });
 
 });
 
