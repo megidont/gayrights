@@ -3,7 +3,7 @@ var auth = require('./auth.json');
 
 var bot = new Discord.Client();
 
-var forbidden = ["straight rights!", "cis rights!", "cishet rights!", "racist rights!", "there's no way I can figure out everything bad please forgive me rights!", "terf rights", "radfem rights"];
+var forbidden = require('./forbidden.json');
 
 bot.once('ready', function(evt){
 
@@ -51,7 +51,9 @@ bot.on('message', function(message){
 			var words = mess.split(/\W+/g);
 			if(words){
 
-				for(var i = 0; i < words.length; i++){
+				var messageCount = words.length > 3? 3 : words.length;
+
+				for(var i = 0; i < messageCount; i++){
 
 					if(words[i].replace(/\W/gi, "") == "rights"){
 
@@ -88,7 +90,15 @@ bot.on('message', function(message){
 
 						outmessage[i] = outmessage[i].replace(/[^a-zA-Z0-9\s:\-\'\<\>\#\@]/gi, "");
 
-						if(!forbidden.includes(outmessage[i]+"!")){
+						var containsNaughty = false;
+
+						for(x in forbidden.words){
+
+							if(outmessage[i].includes(forbidden.words[x])){ containsNaughty = true;}
+
+						}
+
+						if(!containsNaughty){
 
 							message.channel.send(outmessage[i] + "!");
 
