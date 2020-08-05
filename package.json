@@ -5,6 +5,6 @@
 	"main": "bot.js",
 	"author": "Megidon't#0413",
 	"dependencies": {
-		"discord.js": "^11.5.1"
+		"discord.js": "^11.6.4"
 	}
 }
