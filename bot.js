@@ -1,3 +1,5 @@
+/*jshint esversion: 8*/
+
 var Discord = require('discord.js');
 var auth = require('./auth.json');
 
@@ -21,12 +23,12 @@ bot.on('message', function(message){
 
 		if(hasquotes){
 
-			for(var i = 0; i < hasquotes.length; i++){
+			for(let i = 0; i < hasquotes.length; i++){
 
 				var end = hasquotes[i].lastIndexOf("rights") + 6;
 
 				hasquotes[i] = hasquotes[i].substring(1, end);
-				hasquotes[i] = hasquotes[i].replace(/[^a-zA-Z0-9\s:\-\'\<\>\#\@]/gi, "");
+				hasquotes[i] = hasquotes[i].replace(/[^a-zA-Z0-9\s:\-\'<>\#\@]/gi, "");
 
 				if(!forbidden.includes(hasquotes[i] + "!")){
 
@@ -53,7 +55,7 @@ bot.on('message', function(message){
 
 				var messageCount = words.length > 3? 3 : words.length;
 
-				for(var i = 0; i < messageCount; i++){
+				for(let i = 0; i < messageCount; i++){
 
 					if(words[i].replace(/\W/gi, "") == "rights"){
 
@@ -86,13 +88,13 @@ bot.on('message', function(message){
 
 				if(outmessage){
 
-					for(var i = 0; i < outmessage.length; i++){
+					for(let i = 0; i < outmessage.length; i++){
 
-						outmessage[i] = outmessage[i].replace(/[^a-zA-Z0-9\s:\-\'\<\>\#\@]/gi, "");
+						outmessage[i] = outmessage[i].replace(/[^a-zA-Z0-9\s:\-\'<>\#\@]/gi, "");
 
 						var containsNaughty = false;
 
-						for(x in forbidden.words){
+						for(let x in forbidden.words){
 
 							if(outmessage[i].includes(forbidden.words[x])){ containsNaughty = true;}
 
